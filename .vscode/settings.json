@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    "node_modules": true,
+    ".babelrc": true,
+    ".vscode": true,
+    ".gitattributes": true,
+    ".watchmanconfig": true,
+    "yarn.lock": true,
+    ".gitignore": true,
+  }
+}

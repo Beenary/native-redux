@@ -1,35 +1,31 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux'
-import { StyleSheet, Text, View } from 'react-native';
 import { createStore } from 'redux'
-import reducer from "./reducers";
+import reducer from "./reducers/todos";
+import Todos from './Todos'
+import middleware from './middleware'
+import { createBottomTabNavigator } from "react-navigation";
+import Goals from './components/Goals';
 
+const store = createStore(reducer, middleware)
 
-const store = createStore(reducer)
+export default class App extends Component {
 
-export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Todos />
+        <Tabs />
       </Provider>
     );
   }
 }
 
-class Todos extends Component{
-  render(){
-    return(
-      <Text>adsasd</Text>
-    )
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const Tabs = createBottomTabNavigator({
+  Todos: {
+    screen: Todos
   },
-});
+  Goals: {
+    screen: Goals,
+  },
+})
+
