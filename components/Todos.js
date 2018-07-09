@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Text, View, TextInput, StyleSheet, Button } from "react-native";
+
+// importamos las acciones que necesita el componente
+// Como primera funcion tenemos el consumo de los datos iniciales.
 import { handleInitialData } from "../actions/initialData";
 import { addTodo, removeTodo } from "../actions/todos";
 
@@ -20,12 +23,15 @@ const Todo = (props) => (
 class Todos extends Component{
 
   componentDidMount(){
+    // Al estar conectado al store, el component adquiere la funcion dispatch como props.
     const { dispatch } = this.props
+    // Ejecutamos dispatch y pasamos como parametros nuestra accion.
     dispatch(handleInitialData())
   }
 
   addItem = (e) => {
     const { dispatch } = this.props
+    // Ejecutamos dispatch y pasamos como parametros nuestra accion.
     dispatch(addTodo(
       {name:e, id: Math.floor((Math.random() * 10) + 1)}
     ))
@@ -33,6 +39,7 @@ class Todos extends Component{
 
   removeItem = (id) => {
     const { dispatch } = this.props
+    // Ejecutamos dispatch y pasamos como parametros nuestra accion.
     dispatch(removeTodo(id))
   }
 
